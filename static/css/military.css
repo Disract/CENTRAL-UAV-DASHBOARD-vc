@@ -1,0 +1,751 @@
+/* Military Dashboard CSS */
+:root {
+    --military-dark: #0a0e1a;
+    --military-darker: #050810;
+    --military-accent: #00ff41;
+    --military-warning: #ff6b35;
+    --military-danger: #ff3838;
+    --military-info: #00d4ff;
+    --military-border: #1a2332;
+    --military-text: #e0e6ed;
+    --military-text-muted: #8892b0;
+    --military-success: #64ffda;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+    background: linear-gradient(135deg, var(--military-darker) 0%, var(--military-dark) 100%);
+    color: var(--military-text);
+    overflow: hidden;
+}
+
+/* Login Styles */
+.login-body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, #0a0e1a 0%, #1a2332 50%, #0a0e1a 100%);
+    overflow: auto;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+}
+
+.login-card {
+    background: rgba(26, 35, 50, 0.95);
+    border: 2px solid var(--military-accent);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.military-logo {
+    font-size: 3rem;
+    color: var(--military-accent);
+    margin-bottom: 1rem;
+}
+
+.classification {
+    color: var(--military-warning);
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.military-input {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--military-border);
+    color: var(--military-text);
+    font-family: 'Courier New', monospace;
+}
+
+.military-input:focus {
+    background: rgba(0, 0, 0, 0.7);
+    border-color: var(--military-accent);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+    color: var(--military-text);
+}
+
+.btn-military {
+    background: linear-gradient(45deg, var(--military-accent), #00cc33);
+    border: none;
+    color: var(--military-dark);
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-military:hover {
+    background: linear-gradient(45deg, #00cc33, var(--military-accent));
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+    transform: translateY(-2px);
+}
+
+.demo-accounts {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--military-border);
+    text-align: center;
+}
+
+.account-info {
+    font-size: 0.8rem;
+    color: var(--military-text-muted);
+    line-height: 1.6;
+}
+
+/* Dashboard Styles */
+.military-dashboard {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.military-navbar {
+    background: linear-gradient(90deg, var(--military-darker) 0%, var(--military-dark) 100%);
+    border-bottom: 2px solid var(--military-accent);
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.classification-badge {
+    background: var(--military-warning);
+    color: var(--military-dark);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.dashboard-container {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 350px;
+    background: linear-gradient(180deg, var(--military-dark) 0%, var(--military-darker) 100%);
+    border-right: 2px solid var(--military-border);
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.sidebar-section {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--military-border);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.section-header {
+    background: linear-gradient(90deg, var(--military-accent), #00cc33);
+    color: var(--military-dark);
+    padding: 0.75rem 1rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-indicators {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.indicator {
+    background: var(--military-success);
+    color: var(--military-dark);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.indicator-label {
+    font-size: 0.7rem;
+    color: var(--military-dark);
+}
+
+/* UAV Cards */
+.uav-cards-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.uav-card {
+    background: rgba(26, 35, 50, 0.8);
+    border: 1px solid var(--military-border);
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.uav-card:hover {
+    border-color: var(--military-accent);
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+    transform: translateY(-2px);
+}
+
+.uav-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.uav-id {
+    font-weight: bold;
+    color: var(--military-accent);
+    font-size: 1rem;
+}
+
+.uav-type {
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.type-quadcopter {
+    background: var(--military-info);
+    color: var(--military-dark);
+}
+
+.type-fixed_wing {
+    background: var(--military-warning);
+    color: var(--military-dark);
+}
+
+.uav-telemetry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+}
+
+.telemetry-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.telemetry-label {
+    color: var(--military-text-muted);
+}
+
+.telemetry-value {
+    color: var(--military-text);
+    font-weight: bold;
+}
+
+.uav-status {
+    padding: 0.4rem;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+}
+
+.status-en_route { background: var(--military-info); color: var(--military-dark); }
+.status-idle { background: var(--military-text-muted); color: var(--military-dark); }
+.status-returning { background: var(--military-success); color: var(--military-dark); }
+.status-emergency { background: var(--military-danger); color: white; }
+.status-paused { background: var(--military-warning); color: var(--military-dark); }
+.status-rtb { background: var(--military-accent); color: var(--military-dark); }
+
+.uav-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.uav-control-btn {
+    flex: 1;
+    padding: 0.4rem 0.6rem;
+    border: none;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.pause-btn {
+    background: var(--military-warning);
+    color: var(--military-dark);
+}
+
+.pause-btn:hover {
+    background: #ff8c42;
+    box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+}
+
+.kill-btn {
+    background: var(--military-danger);
+    color: white;
+}
+
+.kill-btn:hover {
+    background: #ff5555;
+    box-shadow: 0 0 10px rgba(255, 56, 56, 0.5);
+}
+
+.rtb-btn {
+    background: var(--military-success);
+    color: var(--military-dark);
+}
+
+.rtb-btn:hover {
+    background: #7fffd4;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+/* Mission Log */
+.mission-log {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.log-entry {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid var(--military-accent);
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 0.8rem;
+}
+
+.log-timestamp {
+    color: var(--military-text-muted);
+    font-size: 0.7rem;
+}
+
+.log-message {
+    color: var(--military-text);
+    margin-top: 0.2rem;
+}
+
+/* Video Feeds */
+.video-feeds {
+    padding: 1rem;
+}
+
+.video-feed {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--military-border);
+    border-radius: 5px;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.feed-thumbnail {
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(45deg, var(--military-dark), var(--military-border));
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--military-accent);
+}
+
+.feed-info {
+    flex: 1;
+}
+
+.feed-title {
+    font-weight: bold;
+    color: var(--military-text);
+    font-size: 0.8rem;
+}
+
+.feed-status {
+    color: var(--military-text-muted);
+    font-size: 0.7rem;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Map Section */
+.map-section {
+    flex: 1;
+    position: relative;
+    background: var(--military-dark);
+}
+
+.military-map {
+    height: 100%;
+    width: 100%;
+}
+
+.map-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.control-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.control-group .btn {
+    background: rgba(10, 14, 26, 0.9);
+    border: 1px solid var(--military-border);
+    color: var(--military-text);
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.control-group .btn:hover {
+    background: rgba(0, 255, 65, 0.2);
+    border-color: var(--military-accent);
+    color: var(--military-accent);
+}
+
+/* Bottom Panel */
+.bottom-panel {
+    height: 200px;
+    background: linear-gradient(90deg, var(--military-darker) 0%, var(--military-dark) 100%);
+    border-top: 2px solid var(--military-border);
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.timeline-section {
+    flex: 2;
+    border: 1px solid var(--military-border);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.alerts-section {
+    flex: 1;
+    border: 1px solid var(--military-border);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.system-status {
+    flex: 1;
+    border: 1px solid var(--military-border);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.timeline-container {
+    max-height: 140px;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.timeline-entry {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid var(--military-info);
+    background: rgba(0, 0, 0, 0.2);
+    font-size: 0.8rem;
+}
+
+.timeline-time {
+    color: var(--military-text-muted);
+    font-size: 0.7rem;
+    min-width: 60px;
+}
+
+.timeline-event {
+    color: var(--military-text);
+    margin-left: 1rem;
+}
+
+.alerts-container {
+    max-height: 140px;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.alert-item {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alert-high {
+    background: rgba(255, 56, 56, 0.2);
+    border-left: 3px solid var(--military-danger);
+    color: var(--military-danger);
+}
+
+.alert-medium {
+    background: rgba(255, 107, 53, 0.2);
+    border-left: 3px solid var(--military-warning);
+    color: var(--military-warning);
+}
+
+.alert-low {
+    background: rgba(0, 212, 255, 0.2);
+    border-left: 3px solid var(--military-info);
+    color: var(--military-info);
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.status-label {
+    color: var(--military-text-muted);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-value {
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+}
+
+.status-value.encrypted {
+    background: var(--military-accent);
+    color: var(--military-dark);
+}
+
+.status-value.online {
+    background: var(--military-success);
+    color: var(--military-dark);
+}
+
+.status-value.offline {
+    background: var(--military-danger);
+    color: white;
+}
+
+/* Modal Styles */
+.military-modal .modal-content {
+    background: linear-gradient(135deg, var(--military-dark) 0%, var(--military-darker) 100%);
+    border: 2px solid var(--military-accent);
+    color: var(--military-text);
+}
+
+.military-modal .modal-header {
+    border-bottom: 1px solid var(--military-border);
+    background: rgba(0, 255, 65, 0.1);
+}
+
+.military-modal .modal-title {
+    color: var(--military-accent);
+}
+
+/* Battery and Fuel Indicators */
+.battery-level, .fuel-level {
+    color: var(--military-success);
+}
+
+.battery-level.low, .fuel-level.low {
+    color: var(--military-danger);
+}
+
+.battery-level.medium, .fuel-level.medium {
+    color: var(--military-warning);
+}
+
+/* Threat Level Indicators */
+.threat-green { color: var(--military-success); }
+.threat-yellow { color: var(--military-warning); }
+.threat-red { color: var(--military-danger); }
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--military-darker);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--military-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--military-accent);
+}
+
+/* Leaflet Customizations */
+.leaflet-popup-content-wrapper {
+    background: var(--military-dark);
+    color: var(--military-text);
+    border: 1px solid var(--military-accent);
+}
+
+.leaflet-popup-tip {
+    background: var(--military-dark);
+}
+
+.leaflet-control-layers {
+    background: var(--military-dark);
+    border: 1px solid var(--military-border);
+}
+
+.leaflet-control-layers-toggle {
+    background-color: var(--military-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 300px;
+    }
+}
+
+@media (max-width: 992px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: 300px;
+        order: 2;
+    }
+    
+    .main-content {
+        order: 1;
+    }
+    
+    .bottom-panel {
+        height: 150px;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .timeline-section,
+    .alerts-section,
+    .system-status {
+        flex: none;
+        height: 45px;
+    }
+}
+
+@media (max-width: 768px) {
+    .military-navbar .navbar-brand {
+        font-size: 0.9rem;
+    }
+    
+    .classification-badge {
+        display: none;
+    }
+    
+    .sidebar-section {
+        margin-bottom: 1rem;
+    }
+    
+    .uav-telemetry {
+        grid-template-columns: 1fr;
+    }
+    
+    .control-group {
+        flex-direction: column;
+    }
+}
+
+/* Animation Classes */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Loading States */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--military-border);
+    border-radius: 50%;
+    border-top-color: var(--military-accent);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Geofence Styles */
+.geofence-violation {
+    border-color: var(--military-danger) !important;
+    box-shadow: 0 0 20px rgba(255, 56, 56, 0.5) !important;
+}
+
+.geofence-warning {
+    border-color: var(--military-warning) !important;
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.3) !important;
+}

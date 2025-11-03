@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid mt-4">
+  <h3 class="text-center mb-4">ORB-SLAM Processed Feeds</h3>
+  
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">Feed 1</div>
+        <div class="card-body p-0">
+          <img id="orb-feed-1" class="img-fluid" src="" alt="ORB Feed 1">
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">Feed 2</div>
+        <div class="card-body p-0">
+          <img id="orb-feed-2" class="img-fluid" src="" alt="ORB Feed 2">
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">Feed 3</div>
+        <div class="card-body p-0">
+          <img id="orb-feed-3" class="img-fluid" src="" alt="ORB Feed 3">
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-dark text-white">Feed 4</div>
+        <div class="card-body p-0">
+          <img id="orb-feed-4" class="img-fluid" src="" alt="ORB Feed 4">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='js/orb_slam.js') }}"></script>
+{% endblock %}

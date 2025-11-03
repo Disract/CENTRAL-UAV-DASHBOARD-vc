@@ -1,0 +1,383 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f1419;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.dashboard-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Styles */
+.dashboard-header {
+    background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%);
+    border-bottom: 2px solid #4a5568;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #63b3ed;
+}
+
+.header-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #a0aec0;
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.connected {
+    color: #48bb78;
+}
+
+.disconnected {
+    color: #f56565;
+}
+
+/* Main Content */
+.dashboard-main {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+
+/* Map Container */
+.map-container {
+    flex: 1;
+    position: relative;
+    background-color: #2d3748;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+.map-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.control-btn {
+    background: rgba(45, 55, 72, 0.9);
+    color: white;
+    border: 1px solid #4a5568;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background: rgba(99, 179, 237, 0.8);
+    transform: translateY(-1px);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 350px;
+    background: linear-gradient(180deg, #1a202c 0%, #2d3748 100%);
+    border-left: 2px solid #4a5568;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.sidebar-section {
+    margin-bottom: 2rem;
+}
+
+.sidebar-section h3 {
+    color: #63b3ed;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #4a5568;
+    padding-bottom: 0.5rem;
+}
+
+/* UAV List */
+.uav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.uav-card {
+    background: rgba(45, 55, 72, 0.8);
+    border: 1px solid #4a5568;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.uav-card:hover {
+    border-color: #63b3ed;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 179, 237, 0.2);
+}
+
+.uav-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.uav-id {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.uav-type {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.type-quadcopter {
+    background-color: #48bb78;
+    color: white;
+}
+
+.type-fixed_wing {
+    background-color: #ed8936;
+    color: white;
+}
+
+.uav-telemetry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.telemetry-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.telemetry-label {
+    color: #a0aec0;
+}
+
+.telemetry-value {
+    font-weight: 500;
+}
+
+.uav-status {
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-en_route {
+    background-color: #4299e1;
+    color: white;
+}
+
+.status-idle {
+    background-color: #718096;
+    color: white;
+}
+
+.status-returning {
+    background-color: #38b2ac;
+    color: white;
+}
+
+.status-emergency {
+    background-color: #f56565;
+    color: white;
+}
+
+.status-paused {
+    background-color: #ed8936;
+    color: white;
+}
+
+.uav-controls {
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.uav-control-btn {
+    flex: 1;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.pause-btn {
+    background-color: #ed8936;
+    color: white;
+}
+
+.pause-btn:hover {
+    background-color: #dd6b20;
+}
+
+.kill-btn {
+    background-color: #f56565;
+    color: white;
+}
+
+.kill-btn:hover {
+    background-color: #e53e3e;
+}
+
+/* Battery Level Styling */
+.battery-level {
+    color: #48bb78;
+}
+
+.battery-level.low {
+    color: #f56565;
+}
+
+.battery-level.medium {
+    color: #ed8936;
+}
+
+/* Chart Container */
+.chart-container {
+    background: rgba(45, 55, 72, 0.5);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #2d3748;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    color: white;
+    position: relative;
+}
+
+.close {
+    color: #a0aec0;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #63b3ed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-main {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: 300px;
+    }
+    
+    .header-stats {
+        gap: 1rem;
+    }
+    
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Custom Leaflet Popup Styles */
+.leaflet-popup-content-wrapper {
+    background: #2d3748;
+    color: white;
+    border-radius: 8px;
+}
+
+.leaflet-popup-content {
+    margin: 12px 16px;
+}
+
+.leaflet-popup-tip {
+    background: #2d3748;
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(99, 179, 237, 0.3);
+    border-radius: 50%;
+    border-top-color: #63b3ed;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

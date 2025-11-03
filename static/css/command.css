@@ -1,0 +1,787 @@
+/* UAV Command & Control System - Military Interface CSS */
+
+/* Root Variables */
+:root {
+    /* Day Theme Colors */
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --bg-panel: #e9ecef;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --accent-color: #0d6efd;
+    --success-color: #198754;
+    --warning-color: #fd7e14;
+    --danger-color: #dc3545;
+    --info-color: #0dcaf0;
+    
+    /* Fonts */
+    --font-mono: 'Courier New', 'Monaco', 'Menlo', monospace;
+    --font-sans: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Night Theme Colors */
+[data-theme="night"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-panel: #404040;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: #555555;
+    --accent-color: #4a90e2;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Command Header */
+.command-header {
+    height: 60px;
+    background-color: var(--bg-secondary);
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.system-title {
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.classification {
+    background-color: var(--success-color);
+    color: white;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.header-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.mission-name {
+    font-size: 16px;
+    color: var(--accent-color);
+}
+
+.system-time {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-label {
+    color: var(--text-secondary);
+}
+
+.status-value {
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.user-role {
+    font-size: 12px;
+    color: var(--accent-color);
+}
+
+.user-name {
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+/* Buttons */
+.btn-command {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: none;
+}
+
+.btn-command:hover {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-panel {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 4px 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    min-width: 60px;
+}
+
+.btn-panel:hover {
+    background-color: var(--bg-panel);
+}
+
+.btn-panel:active {
+    background-color: var(--border-color);
+}
+
+.select-panel {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 4px 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    grid-template-rows: 1fr 200px;
+    grid-template-areas: 
+        "left center right"
+        "bottom bottom bottom";
+    height: calc(100vh - 60px);
+    gap: 2px;
+    background-color: var(--border-color);
+}
+
+/* Panels */
+.panel {
+    background-color: var(--bg-secondary);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.panel-left {
+    grid-area: left;
+}
+
+.panel-center {
+    grid-area: center;
+}
+
+.panel-right {
+    grid-area: right;
+}
+
+.panel-bottom {
+    grid-area: bottom;
+}
+
+.panel-header {
+    background-color: var(--bg-panel);
+    border-bottom: 1px solid var(--border-color);
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
+}
+
+.panel-header h3 {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.panel-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-group {
+    display: flex;
+    gap: 4px;
+}
+
+.active-count {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+}
+
+/* UAV Cards */
+.uav-card {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    margin-bottom: 8px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+.uav-card:hover {
+    background-color: var(--border-color);
+}
+
+.uav-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.uav-id {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.uav-type {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 2px 6px;
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.uav-telemetry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.telemetry-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.telemetry-label {
+    color: var(--text-secondary);
+}
+
+.telemetry-value {
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+.uav-status {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 8px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.status-operational { background-color: var(--success-color); color: white; }
+.status-en_route { background-color: var(--info-color); color: white; }
+.status-returning { background-color: var(--warning-color); color: white; }
+.status-emergency { background-color: var(--danger-color); color: white; }
+.status-idle { background-color: var(--text-secondary); color: white; }
+.status-paused { background-color: var(--warning-color); color: white; }
+
+.uav-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.uav-control-btn {
+    flex: 1;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 4px 6px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.uav-control-btn:hover {
+    background-color: var(--bg-panel);
+}
+
+.control-pause { border-color: var(--warning-color); }
+.control-rtb { border-color: var(--info-color); }
+.control-kill { border-color: var(--danger-color); }
+
+/* Map Container */
+.map-container {
+    position: relative;
+    flex: 1;
+}
+
+.tactical-map {
+    width: 100%;
+    height: 100%;
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    z-index: 1000;
+}
+
+/* Mission Log */
+.log-container {
+    height: 100%;
+    overflow-y: auto;
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+.log-entry {
+    padding: 4px 8px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    gap: 8px;
+}
+
+.log-timestamp {
+    color: var(--text-secondary);
+    min-width: 80px;
+}
+
+.log-message {
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.log-level-info { border-left: 3px solid var(--info-color); }
+.log-level-warning { border-left: 3px solid var(--warning-color); }
+.log-level-error { border-left: 3px solid var(--danger-color); }
+.log-level-success { border-left: 3px solid var(--success-color); }
+
+/* Bottom Panel Status Grid */
+.status-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100%;
+    gap: 2px;
+}
+
+.status-section {
+    background-color: var(--bg-panel);
+    padding: 12px;
+    overflow-y: auto;
+}
+
+.status-section h4 {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 4px;
+}
+
+/* Alert Container */
+.alert-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.alert-item {
+    padding: 6px 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: bold;
+    border-left: 4px solid;
+}
+
+.alert-info {
+    background-color: rgba(13, 202, 240, 0.1);
+    border-color: var(--info-color);
+    color: var(--info-color);
+}
+
+.alert-warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-color: var(--warning-color);
+    color: var(--warning-color);
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+}
+
+.alert-success {
+    background-color: rgba(25, 135, 84, 0.1);
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+/* Status Table */
+.status-table {
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+.status-table td {
+    padding: 2px 4px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.status-table td:first-child {
+    color: var(--text-secondary);
+    width: 60%;
+}
+
+.status-active {
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.status-inactive {
+    color: var(--danger-color);
+    font-weight: bold;
+}
+
+.status-degraded {
+    color: var(--warning-color);
+    font-weight: bold;
+}
+
+/* Video Grid */
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+
+.video-feed {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.video-feed:hover {
+    background-color: var(--bg-panel);
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: 60px;
+    background-color: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 10px;
+}
+
+.video-info {
+    font-family: var(--font-mono);
+    font-size: 9px;
+}
+
+.video-title {
+    color: var(--text-primary);
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.video-status {
+    color: var(--text-secondary);
+}
+
+/* Modal Styles */
+.command-modal .modal-content {
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.command-modal .modal-header {
+    background-color: var(--bg-panel);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.command-modal .modal-title {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.command-modal .btn-close {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    opacity: 1;
+}
+
+/* UAV Detail Tables */
+.detail-table {
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+
+.detail-table th {
+    background-color: var(--bg-panel);
+    color: var(--text-secondary);
+    padding: 6px 8px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-table td {
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.detail-table td:first-child {
+    color: var(--text-secondary);
+    width: 40%;
+}
+
+.detail-table td:last-child {
+    color: var(--text-primary);
+    font-weight: bold;
+}
+
+/* Video Display Grid */
+.video-display-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    height: 400px;
+}
+
+.video-display {
+    background-color: var(--border-color);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.video-display-header {
+    background-color: var(--bg-panel);
+    padding: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.video-display-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 14px;
+}
+
+/* Battery and Status Indicators */
+.battery-high { color: var(--success-color); }
+.battery-medium { color: var(--warning-color); }
+.battery-low { color: var(--danger-color); }
+
+.threat-green { color: var(--success-color); }
+.threat-yellow { color: var(--warning-color); }
+.threat-red { color: var(--danger-color); }
+
+/* Leaflet Customizations */
+.leaflet-popup-content-wrapper {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+.leaflet-popup-tip {
+    background-color: var(--bg-secondary);
+}
+
+.leaflet-control-layers {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.leaflet-control-zoom a {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg-panel);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border: 1px solid var(--bg-panel);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 250px 1fr 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 200px 1fr 150px 150px;
+        grid-template-areas: 
+            "left"
+            "center"
+            "right"
+            "bottom";
+    }
+    
+    .header-center {
+        display: none;
+    }
+    
+    .header-right {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .command-header {
+        padding: 0 10px;
+        font-size: 12px;
+    }
+    
+    .system-title {
+        font-size: 14px;
+    }
+    
+    .header-right {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .status-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .command-header,
+    .panel-controls,
+    .uav-controls {
+        display: none;
+    }
+    
+    .dashboard-grid {
+        display: block;
+    }
+    
+    .panel {
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: #000000;
+        --text-secondary: #000000;
+    }
+    
+    [data-theme="night"] {
+        --border-color: #ffffff;
+        --text-secondary: #ffffff;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
