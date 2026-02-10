@@ -12,7 +12,7 @@ The system is designed for testing, development, and demonstration of multi-UAV 
 
 Project architecture and workflow visualizations:
 
-![orb](FAIN1.png)
+![orb](FAIN.png)
 ![System Architecture](final.png)
 
 ## Features
@@ -152,6 +152,4 @@ Customize simulation parameters in `config.py`:
 - No radio communication modules required
 - Safe for testing control logic without flight risk
 
-## License
 
-Specify a license before redistribution.
